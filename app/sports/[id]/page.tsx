@@ -1,6 +1,9 @@
 'use client';
 
-import { use, useState } from 'react';
+import { use, useEffect, useState } from 'react';
+import Link from 'next/link';
+import { sanityClient } from '@/lib/sanity.client';
+import { urlFor } from '@/lib/imageUrl';
 import { notFound } from 'next/navigation';
 
 // Sports data with comprehensive content
@@ -781,6 +784,28 @@ function Accordion({ title, children, defaultOpen = false }: { title: string; ch
 export default function SportPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
   const sport = sportsData[id];
+  const [relatedProjects, setRelatedProjects] = useState<any[]>([]);
+
+  useEffect(() => {
+    async function fetchRelated() {
+      const sportName = sport?.name?.split(' ')[0]?.toLowerCase();
+      if (!sportName) return;
+
+      const query = `*[_type == "project" && $sport in infrastructure[]]{
+        _id,
+        title,
+        location,
+        year,
+        slug,
+        heroImage
+      }`;
+
+      const data = await sanityClient.fetch(query, { sport: sportName });
+      setRelatedProjects(data || []);
+    }
+
+    fetchRelated();
+  }, [sport?.name]);
 
   if (!sport) {
     notFound();
@@ -908,7 +933,50 @@ export default function SportPage({ params }: { params: Promise<{ id: string }> 
         </div>
       </div>
 
-      {/* Final CTA */}
+    
+
+      {/* Related Projects Carousel */}
+      {relatedProjects.length > 0 && (
+        <div className="bg-white py-12 md:py-16">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p className="text-[11px] tracking-[0.25em] uppercase text-[#a98946] mb-2">
+              Related Projects
+            </p>
+            <h3 className="text-2xl md:text-3xl font-light text-[#1A2266] mb-6">
+              {sport.name} Facilities by Amico
+            </h3>
+
+            <div className="flex gap-6 overflow-x-auto pb-4 -mx-4 px-4">
+              {relatedProjects.map((project) => (
+                <Link
+                  key={project._id}
+                  href={`/product/${project.slug?.current ?? project._id}`}
+                  className="min-w-[260px] max-w-xs flex-shrink-0 group"
+                >
+                  {project.heroImage && (
+                    <div className="relative w-full overflow-hidden mb-3 rounded-lg" style={{ aspectRatio: '4 / 3' }}>
+                      <img
+                        src={urlFor(project.heroImage).width(800).height(600).url()}
+                        alt={project.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                  )}
+                  <div className="text-[10px] tracking-[0.25em] uppercase text-gray-500 mb-1">
+                    {project.location} {project.year && `• ${project.year}`}
+                  </div>
+                  <div className="text-sm text-[#1A2266] group-hover:text-[#232b7c]">
+                    {project.title} <span className="inline-block ml-1">→</span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+
+        {/* Final CTA */}
       <div className="bg-[#232b7c] py-12 md:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-normal text-white mb-4 md:mb-6">Ready to Build Your {sport.name}?</h2>

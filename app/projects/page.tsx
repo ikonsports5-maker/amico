@@ -327,7 +327,7 @@ export default function ProjectsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {filteredProjects.map((project, idx) => (
-              <Link key={project.id} href={`/projects/${project.id}`}>
+              <Link key={project.id} href={`/product/${project.id}`}>
                 <div className={`group cursor-pointer transition-all duration-700 ${
                   isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
                 }`} style={{ transitionDelay: `${idx * 200}ms` }}>

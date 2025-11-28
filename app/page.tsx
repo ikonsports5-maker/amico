@@ -2,8 +2,10 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+import { createClient } from '@sanity/client';
+import { urlFor } from '@/lib/imageUrl';
 // Custom hook for intersection observer
-
 import { PT_Sans } from 'next/font/google';
 
 const ptSans = PT_Sans({
@@ -479,108 +481,94 @@ function TestimonialsSection() {
 
 // Featured Project Component
 function FeaturedProjectSection() {
-  const [ref, isInView] = useInView();
+  const [ref] = useInView();
+  const [projects, setProjects] = useState<any[]>([]);
 
-  const projects = [
-    {
-      id: 1,
-      title: "World Centre for Sports Excellence",
-      image: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1000&h=600&fit=crop",
-      area: "15,000",
-      sports: "8",
-      year: "2024"
-    },
-    {
-      id: 2,
-      title: "National Sports Academy Complex",
-      image: "https://images.unsplash.com/photo-1526232761682-d26e03ac148e?w=1000&h=600&fit=crop",
-      area: "22,000",
-      sports: "12",
-      year: "2023"
-    }
-  ];
+  useEffect(() => {
+    const client = createClient({
+      projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+      dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
+      apiVersion: '2025-01-01',
+      useCdn: true,
+    });
+
+    client
+      .fetch(
+        `*[_type == "project" && featured == true] | order(_createdAt desc)[0...3]{
+          _id,
+          title,
+          location,
+          year,
+          slug,
+          heroImage
+        }`,
+      )
+      .then((data) => setProjects(data || []))
+      .catch((err) => {
+        console.error('Error fetching featured projects', err);
+      });
+  }, []);
 
   return (
     <section ref={ref} className="bg-[#e8e6c8] py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h3 className={`text-center text-[#a98946] text-sm font-semibold tracking-wider mb-16 transition-all duration-700 ${
-          isInView ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
-        }`}>
+        <h3 className="text-center text-[#a98946] text-sm font-semibold tracking-wider mb-16">
           FEATURED PROJECTS
         </h3>
-        
-        {/* Projects Container: Horizontal Carousel on Mobile, Vertical Stack on Desktop */}
-        <div className="flex md:flex-col overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-6 md:gap-32 pb-8 md:pb-0">
+
+        {/* Projects Container: Horizontal Carousel on Mobile, Overlapping card on Desktop */}
+        <div className="flex md:flex-col overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-6 md:gap-24 pb-8 md:pb-0">
           {projects.map((project) => (
-            <div key={project.id} className="relative max-w-5xl mx-auto min-w-[85vw] md:min-w-full snap-center">
-              {/* Image - slides in from left */}
-              <div className={`relative z-10 transition-all duration-1000 ease-out ${
-                isInView ? 'translate-x-0' : '-translate-x-32'
-              }`}>
-                <img 
-                  src={project.image} 
-                  alt={project.title} 
-                  className="w-full md:w-4/5 h-[500px] object-cover rounded-2xl shadow-2xl"
-                />
-              </div>
-
-              {/* Text Box - slides in from right and overlaps the image */}
-              <div className={`absolute bottom-8 right-4 md:right-16 z-20 w-[90%] md:w-[380px] transition-all duration-1000 ease-out ${
-                isInView ? 'translate-x-0 opacity-100' : 'translate-x-32 opacity-0'
-              }`}>
-                <div className="bg-white p-8 rounded-xl shadow-2xl border-l-4 border-[#a98946] hover:shadow-3xl transition-shadow duration-300">
-                  <div className="mb-4">
-                    <span className={`inline-block bg-[#232b7c] text-white text-xs font-semibold px-3 py-1 rounded-full mb-3 transition-all duration-500 ${
-                      isInView ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
-                    }`}>
-                      FEATURED PROJECT
-                    </span>
-                    <h4 className={`text-2xl font-thin text-gray-900 mb-3 leading-tight transition-all duration-500 delay-100 ${
-                      isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                    }`}>
-                      {project.title}
-                    </h4>
-                  </div>
-
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className={`transition-all duration-500 ${
-                      isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                    }`} style={{ transitionDelay: '200ms' }}>
-                      <div className="text-xl font-bold text-[#232b7c]">{project.area}</div>
-                      <div className="text-xs text-gray-500 uppercase">Sq Ft</div>
-                    </div>
-                    <div className="w-px h-8 bg-gray-300"></div>
-                    <div className={`transition-all duration-500 ${
-                      isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                    }`} style={{ transitionDelay: '300ms' }}>
-                      <div className="text-xl font-bold text-[#a98946]">{project.sports}</div>
-                      <div className="text-xs text-gray-500 uppercase">Sports</div>
-                    </div>
-                    <div className="w-px h-8 bg-gray-300"></div>
-                    <div className={`transition-all duration-500 ${
-                      isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                    }`} style={{ transitionDelay: '400ms' }}>
-                      <div className="text-xl font-bold text-[#232b7c]">{project.year}</div>
-                      <div className="text-xs text-gray-500 uppercase">Year</div>
-                    </div>
-                  </div>
-
-                  <button className={`bg-[#232b7c] text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-[#a98946] transition-all flex items-center group shadow-lg hover:shadow-xl w-full justify-center ${
-                    isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                  }`} style={{ transitionDelay: '500ms' }}>
-                    VIEW DETAILS 
-                    <span className="ml-2 group-hover:translate-x-2 transition-transform">→</span>
-                  </button>
+            <Link
+              key={project._id}
+              href={
+                project.slug?.current
+                  ? `/product/${project.slug.current}`
+                  : '/product'
+              }
+              className="relative max-w-5xl mx-auto min-w-[85vw] md:min-w-full snap-center flex flex-col group"
+            >
+              {/* Image */}
+              <div className="relative z-10">
+                <div className="w-full md:w-full h-[380px] sm:h-[460px] md:h-[520px] overflow-hidden rounded-2xl shadow-2xl mx-auto">
+                  {project.heroImage && (
+                    <img
+                      src={urlFor(project.heroImage).width(2000).height(1400).url()}
+                      alt={project.title}
+                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                    />
+                  )}
                 </div>
               </div>
-            </div>
+
+              {/* Text Box overlapping image on the right (desktop), below on mobile */}
+              {/* FIX: Added 'z-20' here to ensure overlap works */}
+              <div className="mt-6 md:mt-0 md:absolute md:inset-y-1/4 md:right-10 lg:right-16 flex md:items-center z-20">
+                <div className="bg-white px-8 py-7 md:py-10 rounded-xl md:rounded-2xl shadow-[0_24px_60px_rgba(0,0,0,0.12)] border border-gray-100 max-w-md md:max-w-lg w-full md:w-auto md:min-w-[360px]">
+                  {project.location && (
+                    <p className="text-[11px] tracking-[0.35em] text-gray-500 uppercase mb-3 flex items-center gap-1">
+                      <span>●</span>
+                      {project.location}
+                    </p>
+                  )}
+                  <h4 className="text-2xl md:text-3xl font-light text-gray-900 leading-snug mb-6">
+                    {project.title}
+                  </h4>
+                  <div className="flex items-center justify-end">
+                    <span className="text-[11px] tracking-[0.3em] uppercase text-gray-500 mr-3">
+                      View details
+                    </span>
+                    <span className="text-sm">→</span>
+                  </div>
+                </div>
+              </div>
+            </Link>
           ))}
         </div>
       </div>
     </section>
   );
 }
-
 export default function AmicoHomepage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [sportsDropdownOpen, setSportsDropdownOpen] = useState(false);
@@ -710,7 +698,7 @@ export default function AmicoHomepage() {
                 HOME
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#232b7c] group-hover:w-full transition-all duration-300"></span>
               </a>
-              <a href="/projects" className="text-xs font-medium text-gray-600 hover:text-[#232b7c] transition-colors relative group">
+              <a href="/product" className="text-xs font-medium text-gray-600 hover:text-[#232b7c] transition-colors relative group">
                 PROJECTS
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#232b7c] group-hover:w-full transition-all duration-300"></span>
               </a>
@@ -720,7 +708,7 @@ export default function AmicoHomepage() {
                 onMouseLeave={() => setSportsDropdownOpen(false)}
               >
                 <button className="text-xs font-medium text-gray-600 hover:text-[#232b7c] transition-colors relative flex items-center gap-1 pb-0">
-                  SPORTS
+                  SERVICES
                   <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                   </svg>
@@ -779,7 +767,7 @@ export default function AmicoHomepage() {
                 HOME
               </a>
               <a
-                href="/projects"
+                href="/product"
                 className="block px-4 py-3 text-base font-medium text-gray-600 hover:text-[#232b7c] hover:bg-gray-50 rounded-md transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
