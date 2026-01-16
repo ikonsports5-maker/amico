@@ -886,9 +886,9 @@ export default function SportPage({ params }: { params: Promise<{ id: string }> 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mb-12">
           {sport.services.map((service, index) => (
             <div key={index} className="text-center md:text-left">
-              <div className="flex justify-center md:justify-start mb-4">
+              {/* <div className="flex justify-center md:justify-start mb-4">
                 <ServiceIcon type={service.icon} />
-              </div>
+              </div> */}
               <h3 className="text-xl font-semibold text-gray-900 mb-2">{service.title}</h3>
               <p className="text-gray-600 text-sm leading-relaxed">{service.description}</p>
             </div>

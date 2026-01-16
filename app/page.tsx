@@ -114,7 +114,7 @@ function WhatWeDoSection() {
   return (
     <section ref={ref} className="bg-[#F5F5F2] py-24 relative overflow-hidden">
       {/* Background Images - Left */}
-      <div className="absolute left-0 top-0 h-full w-1/4 opacity-[0.03] pointer-events-none">
+      <div className="absolute left-0 top-0 h-full w-1/4 opacity-[0.2] pointer-events-none">
         <img 
           src="/bgimg.png" 
           alt="" 
@@ -123,7 +123,7 @@ function WhatWeDoSection() {
       </div>
       
       {/* Background Images - Right */}
-      <div className="absolute right-0 top-0 h-full w-1/4 opacity-[0.03] pointer-events-none">
+      <div className="absolute right-0 top-0 h-full w-1/4 opacity-[0.2] pointer-events-none">
         <img 
           src="/bgimg.png" 
           alt="" 
@@ -305,11 +305,7 @@ function PartnershipBanner() {
           }`}>
             OFFICIAL SPORTS INFRASTRUCTURE DEVELOPMENT PARTNER FOR <span className="inline-block">ALL INDIA PICKLEBALL ASSOCIATION</span>
           </h3>
-          <button className={`bg-white text-[#232b7c] px-8 py-2.5 rounded-md text-sm font-bold uppercase tracking-wider hover:bg-gray-100 hover:scale-105 transition-all w-fit delay-[400ms] ${
-            isInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'
-          }`}>
-            READ MORE
-          </button>
+         
         </div>
 
         {/* Right Side - Parallelogram Image */}
@@ -840,7 +836,7 @@ export default function AmicoHomepage() {
         {/* Mobile View - Stacked Layout */}
         <div className="md:hidden">
           {/* Top Video */}
-          <div className="h-48 relative animate-fade-in overflow-hidden">
+          <div className="h-[350px] relative animate-fade-in overflow-hidden">
             <video 
               src="/amico-vid-1.mp4" 
               autoPlay 
@@ -860,18 +856,7 @@ export default function AmicoHomepage() {
             </h2>
           </div>
           
-          {/* Bottom Video */}
-          <div className="h-48 relative animate-fade-in overflow-hidden">
-            <video 
-              src="/amico-vid-1.mp4" 
-              autoPlay 
-              loop 
-              muted 
-              playsInline
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-transparent to-white/30"></div>
-          </div>
+         
         </div>
 
         {/* Desktop View - Three Column Layout */}
