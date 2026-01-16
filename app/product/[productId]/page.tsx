@@ -60,7 +60,7 @@ export default async function ProductPage(props: ProjectPageProps) {
       </section>
 
       {/* Blue info bar */}
-      <section className="bg-[#232b7c] text-white py-6">
+      <section className="bg-[#232b7c] px-6 text-white py-6">
         <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-xs md:text-sm">
           <div>
             <p className="uppercase opacity-75 mb-1">Client</p>
