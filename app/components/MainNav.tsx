@@ -113,7 +113,7 @@ export function MainNav() {
               BLOG
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#232b7c] group-hover:w-full transition-all duration-300" />
             </a>
-            <a href="#" className="text-xs font-medium text-gray-600 hover:text-[#232b7c] transition-colors relative group">
+            <a href="/contact" className="text-xs font-medium text-gray-600 hover:text-[#232b7c] transition-colors relative group">
               CONTACT
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#232b7c] group-hover:w-full transition-all duration-300" />
             </a>
@@ -189,7 +189,7 @@ export function MainNav() {
               BLOG
             </a>
             <a
-              href="#"
+              href="/contact"
               className="block px-4 py-3 text-base font-medium text-gray-600 hover:text-[#232b7c] hover:bg-gray-50 rounded-md transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
