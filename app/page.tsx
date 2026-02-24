@@ -376,7 +376,7 @@ function TestimonialsSection() {
     return () => clearInterval(interval);
   }, [testimonials.length]);
 
-  const goToSlide = (index) => {
+  const goToSlide = (index:any) => {
     setCurrentIndex(index);
   };
 
