@@ -3,6 +3,7 @@
 import { useState } from 'react';
 
 const sportsPages = [
+  { name: 'Gym Solutions', slug: '/services/gym' },
   { name: 'Cricket Turf', slug: 'cricket-turf' },
   { name: 'Tennis Courts', slug: 'tennis-courts' },
   { name: 'Football Turf', slug: 'football-turf' },
@@ -13,6 +14,7 @@ const sportsPages = [
   { name: 'Squash Courts', slug: 'squash-courts' },
   { name: 'Athletic Tracks', slug: 'athletic-tracks' },
   { name: 'Swimming Pools', slug: 'swimming-pools' },
+
 ];
 
 export function MainNav() {
@@ -87,7 +89,7 @@ export function MainNav() {
                   {sportsPages.map((sport) => (
                     <a
                       key={sport.slug}
-                      href={`/sports/${sport.slug}`}
+                      href={sport.slug == '/services/gym' ? '/services/gym' : `/sports/${sport.slug}`}
                       className="block px-4 py-2 text-xs font-medium text-gray-700 hover:bg-[#F5F5F2] hover:text-[#232b7c] transition-colors"
                     >
                       {sport.name}
@@ -105,7 +107,7 @@ export function MainNav() {
           </div>
 
           <div className="hidden lg:flex items-center space-x-8">
-            <a href="#" className="text-xs font-medium text-gray-600 hover:text-[#232b7c] transition-colors relative group">
+            <a href="/about" className="text-xs font-medium text-gray-600 hover:text-[#232b7c] transition-colors relative group">
               ABOUT
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#232b7c] group-hover:w-full transition-all duration-300" />
             </a>
@@ -160,7 +162,7 @@ export function MainNav() {
                   {sportsPages.map((sport) => (
                     <a
                       key={sport.slug}
-                      href={`/sports/${sport.slug}`}
+                      href={sport.slug == 'gym' ? '/services/gym' : `/sports/${sport.slug}`}
                       className="block px-4 py-2 text-sm font-medium text-gray-600 hover:text-[#232b7c] hover:bg-gray-50 rounded-md transition-colors"
                       onClick={() => {
                         setMobileMenuOpen(false);

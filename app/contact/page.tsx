@@ -1,10 +1,12 @@
 import React from 'react';
+import { MainNav } from '../components/MainNav';
+import Footer from '../components/Footer';
 
 function ContactPage() {
   const contactInfo = [
     {
       title: "Our Office",
-      details: ["123 Sports Arena Way", "New Delhi, Delhi 110001"],
+      details: ["1st Floor, Amico Sports Private Limited", "14/122, Shipra Path, Mansarovar Sector 1", "Mansarovar, Jaipur, Rajasthan 302020"],
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -14,7 +16,7 @@ function ContactPage() {
     },
     {
       title: "Contact Details",
-      details: ["+91 98765 43210", "info@amicosports.com"],
+      details: ["+91 88907 77424", "+91 92163 88715", "support@amicosportss.com"],
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -23,7 +25,7 @@ function ContactPage() {
     },
     {
       title: "Business Hours",
-      details: ["Mon - Sat: 9:00 AM - 7:00 PM", "Sunday: Closed"],
+      details: ["Mon - Sat: 10:00 AM - 6:00 PM", "Sunday: Closed"],
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -34,8 +36,9 @@ function ContactPage() {
 
   return (
     <div className="bg-[#F5F5F2] min-h-screen">
+      <MainNav />
       {/* Header Section */}
-      <section className="py-20">
+      <section className="py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="text-[#a98946] text-xs font-bold tracking-[0.2em] uppercase block mb-3">
@@ -72,26 +75,26 @@ function ContactPage() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-[#1A2266] text-sm font-semibold mb-2 uppercase tracking-wider">Full Name</label>
-                      <input 
-                        type="text" 
+                      <input
+                        type="text"
                         className="w-full bg-[#F5F5F2] border-none rounded-lg p-4 text-gray-700 focus:ring-2 focus:ring-[#a98946] outline-none transition-all"
                         placeholder="John Doe"
                       />
                     </div>
                     <div>
                       <label className="block text-[#1A2266] text-sm font-semibold mb-2 uppercase tracking-wider">Email Address</label>
-                      <input 
-                        type="email" 
+                      <input
+                        type="email"
                         className="w-full bg-[#F5F5F2] border-none rounded-lg p-4 text-gray-700 focus:ring-2 focus:ring-[#a98946] outline-none transition-all"
                         placeholder="john@example.com"
                       />
                     </div>
                   </div>
-                  
+
                   <div>
                     <label className="block text-[#1A2266] text-sm font-semibold mb-2 uppercase tracking-wider">Subject</label>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       className="w-full bg-[#F5F5F2] border-none rounded-lg p-4 text-gray-700 focus:ring-2 focus:ring-[#a98946] outline-none transition-all"
                       placeholder="Padel Court Construction"
                     />
@@ -99,15 +102,15 @@ function ContactPage() {
 
                   <div>
                     <label className="block text-[#1A2266] text-sm font-semibold mb-2 uppercase tracking-wider">Message</label>
-                    <textarea 
+                    <textarea
                       rows={5}
                       className="w-full bg-[#F5F5F2] border-none rounded-lg p-4 text-gray-700 focus:ring-2 focus:ring-[#a98946] outline-none transition-all"
                       placeholder="Tell us about your project..."
                     ></textarea>
                   </div>
 
-                  <button 
-                    type="submit" 
+                  <button
+                    type="submit"
                     className="w-full md:w-auto bg-[#1A2266] hover:bg-[#a98946] text-white font-bold py-4 px-10 rounded-full transition-colors duration-300 uppercase tracking-widest text-sm"
                   >
                     Send Message
@@ -119,15 +122,21 @@ function ContactPage() {
         </div>
       </section>
 
-      {/* Optional Map Placeholder */}
+      {/* Interactive Google Map */}
       <section className="pb-20 px-4">
         <div className="max-w-6xl mx-auto h-[400px] bg-gray-200 rounded-2xl overflow-hidden shadow-inner relative">
-          {/* You can drop a Google Maps iframe here */}
-          <div className="absolute inset-0 flex items-center justify-center text-gray-400 font-light italic">
-            [ Interactive Map Location ]
-          </div>
+          <iframe
+            src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=14/122,%20Shipra%20Path,%20Mansarovar%20Sector%201,%20Mansarovar,%20Jaipur,%20Rajasthan%20302020+(Amico%20Sports%20Private%20Limited)&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+            className="absolute inset-0 w-full h-full"
+            style={{ border: 0 }}
+            allowFullScreen={true}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
         </div>
       </section>
+
+      <Footer />
     </div>
   );
 }

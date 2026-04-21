@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { sanityClient } from '@/lib/sanity.client';
 import { urlFor } from '@/lib/imageUrl';
 import { notFound } from 'next/navigation';
+import Footer from '@/app/components/Footer';
+import { MainNav } from '@/app/components/MainNav';
 
 // Sports data with comprehensive content
 const sportsData: Record<string, {
@@ -717,48 +719,48 @@ function ServiceIcon({ type }: { type: string }) {
   const icons = {
     design: (
       <svg className="w-16 h-16" viewBox="0 0 64 64" fill="none" stroke="currentColor">
-        <path d="M8 56L56 8M56 8H32M56 8V32" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M32 32L48 48" strokeWidth="3" strokeLinecap="round"/>
-        <rect x="8" y="24" width="24" height="24" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M8 56L56 8M56 8H32M56 8V32" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M32 32L48 48" strokeWidth="3" strokeLinecap="round" />
+        <rect x="8" y="24" width="24" height="24" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
     earthwork: (
       <svg className="w-16 h-16" viewBox="0 0 64 64" fill="none" stroke="currentColor">
-        <path d="M8 40L20 28L32 36L52 16" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M8 48H56V56H8V48Z" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-        <rect x="36" y="8" width="16" height="8" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M8 40L20 28L32 36L52 16" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M8 48H56V56H8V48Z" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+        <rect x="36" y="8" width="16" height="8" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
     turf: (
       <svg className="w-16 h-16" viewBox="0 0 64 64" fill="none" stroke="currentColor">
-        <circle cx="32" cy="32" r="20" strokeWidth="3"/>
-        <path d="M32 12V52M12 32H52" strokeWidth="3" strokeLinecap="round"/>
-        <path d="M20 20L44 44M44 20L20 44" strokeWidth="3" strokeLinecap="round"/>
+        <circle cx="32" cy="32" r="20" strokeWidth="3" />
+        <path d="M32 12V52M12 32H52" strokeWidth="3" strokeLinecap="round" />
+        <path d="M20 20L44 44M44 20L20 44" strokeWidth="3" strokeLinecap="round" />
       </svg>
     ),
     certification: (
       <svg className="w-16 h-16" viewBox="0 0 64 64" fill="none" stroke="currentColor">
-        <path d="M8 8H56V40H8V8Z" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M20 24L28 32L44 16" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M28 40V56L32 52L36 56V40" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M8 8H56V40H8V8Z" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M20 24L28 32L44 16" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M28 40V56L32 52L36 56V40" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
     maintenance: (
       <svg className="w-16 h-16" viewBox="0 0 64 64" fill="none" stroke="currentColor">
-        <circle cx="32" cy="32" r="16" strokeWidth="3"/>
-        <path d="M32 8V16M32 48V56M8 32H16M48 32H56" strokeWidth="3" strokeLinecap="round"/>
-        <path d="M14 14L20 20M44 20L50 14M14 50L20 44M44 44L50 50" strokeWidth="3" strokeLinecap="round"/>
+        <circle cx="32" cy="32" r="16" strokeWidth="3" />
+        <path d="M32 8V16M32 48V56M8 32H16M48 32H56" strokeWidth="3" strokeLinecap="round" />
+        <path d="M14 14L20 20M44 20L50 14M14 50L20 44M44 44L50 50" strokeWidth="3" strokeLinecap="round" />
       </svg>
     )
   };
-  
+
   return <div className="text-gray-700">{icons[type as keyof typeof icons] || icons.design}</div>;
 }
 
 // Accordion component for FAQs and Product Features
 function Accordion({ title, children, defaultOpen = false }: { title: string; children: React.ReactNode; defaultOpen?: boolean }) {
   const [isOpen, setIsOpen] = useState(defaultOpen);
-  
+
   return (
     <div className="border-b border-gray-200">
       <button
@@ -813,10 +815,12 @@ export default function SportPage({ params }: { params: Promise<{ id: string }> 
 
   return (
     <div className="min-h-screen bg-white">
+
+      <MainNav />
       {/* Hero Section */}
       <div className="relative h-[60vh] min-h-[400px] flex items-center justify-center">
-        <img 
-          src={sport.heroImage} 
+        <img
+          src={sport.heroImage}
           alt={sport.name}
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -826,7 +830,7 @@ export default function SportPage({ params }: { params: Promise<{ id: string }> 
           <p className="text-lg md:text-xl font-light">{sport.tagline}</p>
         </div>
         {/* Back to Home */}
-        <a 
+        <a
           href="/"
           className="absolute top-24 left-4 md:left-8 bg-white/90 hover:bg-white text-[#232b7c] px-4 md:px-6 py-2 md:py-3 rounded-full font-semibold transition-all flex items-center gap-2 shadow-lg text-sm md:text-base z-20"
         >
@@ -864,8 +868,8 @@ export default function SportPage({ params }: { params: Promise<{ id: string }> 
           <p className="text-white text-lg md:text-xl font-normal text-center md:text-left">
             Contact Us to Build Your Own {sport.name.includes('Courts') || sport.name.includes('Turf') ? sport.name : sport.name + ' Facility'} and Learn More!
           </p>
-          <a 
-            href="#"
+          <a
+            href="/contact"
             className="bg-gray-900 text-white px-6 md:px-8 py-3 md:py-3.5 rounded hover:bg-gray-800 transition-colors whitespace-nowrap font-medium text-sm md:text-base"
           >
             Contact Us
@@ -905,13 +909,13 @@ export default function SportPage({ params }: { params: Promise<{ id: string }> 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-[#C8A05C] text-sm font-semibold tracking-wider mb-3">PRODUCTS</p>
           <h2 className="text-3xl md:text-4xl font-normal text-gray-900 mb-6">{sport.productTitle}</h2>
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-start mb-8">
             <div>
               <p className="text-gray-700 leading-relaxed mb-8 text-base md:text-lg">
                 {sport.productDescription}
               </p>
-              
+
               {/* Product Features */}
               <div>
                 {sport.productFeatures.map((feature, index) => (
@@ -921,10 +925,10 @@ export default function SportPage({ params }: { params: Promise<{ id: string }> 
                 ))}
               </div>
             </div>
-            
+
             <div className="order-first lg:order-last">
-              <img 
-                src={sport.productImage} 
+              <img
+                src={sport.productImage}
                 alt={sport.productTitle}
                 className="w-full h-64 md:h-80 lg:h-96 object-cover rounded-lg shadow-lg"
               />
@@ -933,7 +937,7 @@ export default function SportPage({ params }: { params: Promise<{ id: string }> 
         </div>
       </div>
 
-    
+
 
       {/* Related Projects Carousel */}
       {relatedProjects.length > 0 && (
@@ -976,8 +980,8 @@ export default function SportPage({ params }: { params: Promise<{ id: string }> 
       )}
 
 
-        {/* Final CTA */}
-      <div className="bg-[#232b7c] py-12 md:py-20">
+      {/* Final CTA */}
+      {/* <div className="bg-[#232b7c] py-12 md:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-normal text-white mb-4 md:mb-6">Ready to Build Your {sport.name}?</h2>
           <p className="text-lg md:text-xl text-white/90 mb-6 md:mb-8">
@@ -992,7 +996,8 @@ export default function SportPage({ params }: { params: Promise<{ id: string }> 
             </button>
           </div>
         </div>
-      </div>
+      </div> */}
+      <Footer />
     </div>
   );
 }
