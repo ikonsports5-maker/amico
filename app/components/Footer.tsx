@@ -67,7 +67,7 @@ export default function Footer() {
                             <li><a href="/contact" className="hover:text-gray-200 transition-colors">Contact Us</a></li>
                             <li><a href="/product" className="hover:text-gray-200 transition-colors">Projects</a></li>
                             <li><a href="/brochure.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-gray-200 transition-colors">Download Brochure</a></li>
-                            <li><a href="#" className="hover:text-gray-200 transition-colors">Careers</a></li>
+                            {/* <li><a href="#" className="hover:text-gray-200 transition-colors">Careers</a></li> */}
                         </ul>
                     </div>
 
@@ -103,7 +103,7 @@ export default function Footer() {
             {/* Bottom Bar */}
             <div className="border-t border-white/20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center md:text-left">
-                    <p className="text-xs text-gray-300">© 2025 Amico Sports | All rights reserved</p>
+                    <p className="text-xs text-gray-300">© {new Date().getFullYear()} Amico Sports | All rights reserved</p>
                 </div>
             </div>
 
