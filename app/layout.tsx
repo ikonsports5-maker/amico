@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: "Amico Sports Infra",
   description: "Amico Sports Infra is a leading sports infrastructure company in India, providing world-class sports facilities for all sports, from football turf to pickleball courts and basketball courts.",
   icons: {
-    icon: "/logo.png",
+    icon: "/images/amico-sticker.png",
   },
 };
 

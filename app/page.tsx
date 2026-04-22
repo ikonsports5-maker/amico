@@ -9,6 +9,7 @@ import { urlFor } from '@/lib/imageUrl';
 // Custom hook for intersection observer
 import { PT_Sans } from 'next/font/google';
 import { MainNav } from './components/MainNav';
+import { InstagramFeed } from './components/Instagramfeed';
 
 const ptSans = PT_Sans({
   weight: ['400', '700'],
@@ -1144,6 +1145,8 @@ export default function AmicoHomepage() {
       <TestimonialsSection />
 
       <SurfacesSection />
+
+      <InstagramFeed />
 
       {/* Footer */}
       <Footer />
