@@ -544,7 +544,6 @@ function PartnershipBanner() {
     </section>
   );
 }
-
 function TestimonialsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -590,12 +589,12 @@ function TestimonialsSection() {
     setCurrentIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
   };
 
-  const goToSlide = (index: number) => {
+  const goToSlide = (index) => {
     setCurrentIndex(index);
   };
 
   return (
-    <section className="bg-[#FAFBF9] py-24 relative overflow-hidden font-sans flex flex-col items-center">
+    <section className="bg-[#FAFBF9] py-16 md:py-24 relative overflow-hidden font-sans flex flex-col items-center">
       {/* Background Decoratives */}
       <div className="absolute top-10 right-10 md:top-24 md:right-24 opacity-30">
         <div className="grid grid-cols-6 gap-3">
@@ -604,140 +603,97 @@ function TestimonialsSection() {
           ))}
         </div>
       </div>
-      <div className="absolute top-32 right-10 w-80 h-80 bg-[#E8F0EA] rounded-full filter blur-[100px] opacity-60 pointer-events-none"></div>
-      <div className="absolute -bottom-20 -left-20 w-[500px] h-[500px] bg-[#E8F0EA] rounded-full filter blur-[120px] opacity-80 pointer-events-none"></div>
-
-      {/* Wave Graphic */}
-      <svg className="absolute bottom-0 left-0 w-full md:w-1/2 h-auto opacity-[0.25] text-[#86A690] pointer-events-none" viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0,224L48,213.3C96,203,192,181,288,154.7C384,128,480,96,576,112C672,128,768,192,864,208C960,224,1056,192,1152,192C1248,192,1344,224,1392,240L1440,256V320H1392C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320H0Z" fill="none" stroke="currentColor" strokeWidth="1.5" />
-        <path d="M0,288L48,266.7C96,245,192,203,288,197.3C384,192,480,224,576,234.7C672,245,768,235,864,229.3C960,224,1056,224,1152,213.3C1248,203,1344,181,1392,170.7L1440,160V320H1392C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320H0Z" fill="none" stroke="currentColor" strokeWidth="1" />
-      </svg>
+      <div className="absolute top-32 right-10 w-60 h-60 md:w-80 md:h-80 bg-[#E8F0EA] rounded-full filter blur-[80px] opacity-60 pointer-events-none"></div>
 
       <div className="max-w-[1100px] mx-auto px-4 relative z-10 w-full flex flex-col items-center">
         {/* Header section */}
-        <div className="text-center mb-16 relative w-full flex flex-col items-center">
-          <div className="flex items-center justify-center gap-4 mb-5">
+        <div className="text-center mb-10 md:mb-16 relative w-full flex flex-col items-center">
+          <div className="flex items-center justify-center gap-4 mb-4">
             <span className="w-6 h-[1px] bg-[#61856B]"></span>
-            <span className="text-[#557A5F] text-[10px] md:text-xs font-bold tracking-[0.25em] uppercase">
-              Our Happy Customers
-            </span>
+            <span className="text-[#557A5F] text-[10px] md:text-xs font-bold tracking-[0.25em] uppercase">Our Happy Customers</span>
             <span className="w-6 h-[1px] bg-[#61856B]"></span>
           </div>
-
-          <h2 className="text-[44px] md:text-6xl font-serif tracking-tight text-[#16271D] mb-6 shadow-sm drop-shadow-sm">
-            Testimonials
-          </h2>
-
+          <h2 className="text-4xl md:text-6xl font-serif tracking-tight text-[#16271D] mb-5 shadow-sm">Testimonials</h2>
           <div className="flex items-center justify-center gap-3">
-            <div className="w-16 h-[1px] bg-[#3B5A44]"></div>
-            <div className="w-7 h-7 rounded-full bg-[#3B5A44] flex items-center justify-center text-white pb-0.5">
-              <span className="text-sm">★</span>
+            <div className="w-12 md:w-16 h-[1px] bg-[#3B5A44]"></div>
+            <div className="w-6 h-6 md:w-7 md:h-7 rounded-full bg-[#3B5A44] flex items-center justify-center text-white pb-0.5">
+              <span className="text-xs md:text-sm">★</span>
             </div>
-            <div className="w-16 h-[1px] bg-[#3B5A44]"></div>
+            <div className="w-12 md:w-16 h-[1px] bg-[#3B5A44]"></div>
           </div>
         </div>
 
         {/* Carousel Container */}
         <div className="w-full relative flex items-center justify-center">
-
-          {/* Previous Button - hidden mobile */}
-          <button
-            onClick={handlePrev}
-            className="hidden lg:flex w-12 h-12 rounded-full border border-[#3B5A44] bg-[#3B5A44] text-white hover:bg-[#2A4232] transition-colors items-center justify-center absolute left-0 z-20 shadow-lg -translate-x-1/2"
-            aria-label="Previous testimonial"
-          >
+          {/* Desktop Navigation Buttons */}
+          <button onClick={handlePrev} className="hidden lg:flex w-12 h-12 rounded-full border border-[#3B5A44] bg-[#3B5A44] text-white hover:bg-[#2A4232] transition-colors items-center justify-center absolute left-0 z-30 shadow-lg -translate-x-1/2">
             <svg className="w-5 h-5 ml-[-2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" /></svg>
           </button>
 
           {/* Slider masking wrapper */}
-          <div className="w-full max-w-[940px] overflow-hidden rounded-[20px] shadow-[0_12px_40px_-10px_rgba(0,0,0,0.06)] bg-white mx-4 lg:mx-0 relative z-10">
-            {/* Slider Track */}
-            <div
-              className="flex transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
-              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-            >
+          <div className="w-full max-w-[940px] overflow-hidden rounded-[20px] shadow-[0_12px_40px_-10px_rgba(0,0,0,0.06)] bg-white relative z-10">
+            <div className="flex transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
               {testimonials.map((t) => (
-                <div key={t.id} className="w-full flex-shrink-0 flex flex-col md:flex-row items-stretch h-auto bg-white min-h-[440px]">
+                <div key={t.id} className="w-full flex-shrink-0 flex flex-col md:flex-row items-stretch bg-white">
 
-                  {/* Left Content Card */}
-                  <div className="w-full md:w-[60%] p-8 md:p-12 lg:p-[60px] flex flex-col justify-between">
+                  {/* TEXT SECTION (Top on Mobile) */}
+                  <div className="w-full md:w-[60%] p-8 md:p-12 lg:p-[60px] flex flex-col justify-between bg-white">
                     <div>
-                      {/* Quote mark icon */}
-                      <svg className="w-16 h-16 md:w-20 md:h-20 text-[#3B5A44] mb-8 shrink-0 relative -left-2" viewBox="0 0 24 24" fill="currentColor">
+                      <svg className="w-10 h-10 md:w-20 md:h-20 text-[#3B5A44] mb-6 md:mb-8 shrink-0" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                       </svg>
-
-                      <p className="text-[#414E45] text-[15px] md:text-[16px] leading-[1.8] mb-12 font-medium">
-                        {t.text}
+                      <p className="text-[#414E45] text-[14px] md:text-[16px] leading-[1.7] md:leading-[1.8] mb-8 font-medium italic">
+                        "{t.text}"
                       </p>
                     </div>
-
                     <div>
-                      <div className="w-10 h-[1.5px] bg-[#D4DDD7] mb-5"></div>
-                      <h4 className="text-[#202F24] tracking-wide font-bold uppercase text-[15px] md:text-[16px] mb-2 flex items-center gap-2">
-                        {t.name}
-                      </h4>
-                      <h5 className="text-[#6C8E75] font-medium text-[13px] md:text-sm">
-                        {t.title}
-                      </h5>
+                      <div className="w-10 h-[1.5px] bg-[#D4DDD7] mb-4"></div>
+                      <h4 className="text-[#202F24] tracking-wide font-bold uppercase text-[14px] md:text-[16px] mb-1">{t.name}</h4>
+                      <h5 className="text-[#6C8E75] font-medium text-[12px] md:text-sm">{t.title}</h5>
                     </div>
                   </div>
 
-                  {/* Right Image + Context Card */}
-                  <div className="w-full md:w-[40%] bg-[#364B3B] flex flex-col relative z-0">
-                    {/* 60% Image area */}
-                    <div className="basis-[60%] shrink-0 h-[280px] md:h-auto w-full relative">
+                  {/* PHOTO & PROJECT SECTION (Bottom on Mobile) */}
+                  <div className="w-full md:w-[40%] flex flex-col">
+                    {/* The Photo */}
+                    <div className="h-[240px] md:h-auto md:flex-[1.5] w-full relative overflow-hidden">
                       <img src={t.image} alt={t.name} className="absolute inset-0 w-full h-full object-cover object-top" />
                     </div>
-                    {/* 40% Text Context area */}
-                    <div className="basis-[40%] shrink-0 p-8 md:p-10 flex flex-col justify-center bg-[#2B4031]">
-                      <p className="text-[#9DB8A4] tracking-[0.2em] text-[10px] uppercase font-bold mb-3">Project</p>
-                      <h3 className="text-[#F1F4F2] text-lg md:text-[20px] font-medium leading-snug mb-5">
+
+                    {/* The Green Rectangle (Project Info) */}
+                    <div className="py-6 px-8 md:p-10 bg-[#2B4031] flex flex-col justify-center">
+                      <p className="text-[#9DB8A4] tracking-[0.2em] text-[9px] md:text-[10px] uppercase font-bold mb-2">Project</p>
+                      <h3 className="text-[#F1F4F2] text-base md:text-[18px] font-medium leading-snug mb-4">
                         {t.projectName}
                       </h3>
                       <div className="w-8 h-[2px] bg-[#9DB8A4]"></div>
                     </div>
                   </div>
+
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Next Button - hidden mobile */}
-          <button
-            onClick={handleNext}
-            className="hidden lg:flex w-12 h-12 rounded-full border border-gray-300 bg-white text-gray-500 hover:border-[#3B5A44] hover:bg-white hover:text-[#3B5A44] transition-colors items-center justify-center absolute right-0 z-20 shadow-md translate-x-1/2"
-            aria-label="Next testimonial"
-          >
+          <button onClick={handleNext} className="hidden lg:flex w-12 h-12 rounded-full border border-gray-300 bg-white text-gray-500 hover:border-[#3B5A44] transition-colors items-center justify-center absolute right-0 z-30 shadow-md translate-x-1/2">
             <svg className="w-5 h-5 ml-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" /></svg>
           </button>
         </div>
 
-        {/* Mobile Next/Prev buttons + Dots Container */}
-        <div className="flex items-center justify-center gap-6 mt-12 w-full">
-          <button onClick={handlePrev} className="lg:hidden p-2.5 rounded-full border border-[#3B5A44] bg-[#3B5A44] text-white">
-            <svg className="w-5 h-5 -ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" /></svg>
+        {/* Mobile Pagination Controls */}
+        <div className="flex items-center justify-center gap-5 mt-10 w-full">
+          <button onClick={handlePrev} className="lg:hidden p-3 rounded-full border border-[#3B5A44] bg-[#3B5A44] text-white">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" /></svg>
           </button>
-
-          <div className="flex justify-center gap-3">
+          <div className="flex justify-center gap-2.5">
             {testimonials.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`transition-all duration-300 rounded-full w-2.5 h-2.5 ${index === currentIndex
-                  ? 'bg-[#3B5A44]'
-                  : 'bg-[#CCD6D0] hover:bg-[#A9B8AF]'
-                  }`}
-                aria-label={`Go to testimonial ${index + 1}`}
-              />
+              <button key={index} onClick={() => goToSlide(index)} className={`transition-all duration-300 rounded-full h-2 ${index === currentIndex ? 'bg-[#3B5A44] w-6' : 'bg-[#CCD6D0] w-2'}`} />
             ))}
           </div>
-
-          <button onClick={handleNext} className="lg:hidden p-2.5 rounded-full border border-[#B0BEB5] text-[#718878] bg-white">
-            <svg className="w-5 h-5 ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" /></svg>
+          <button onClick={handleNext} className="lg:hidden p-3 rounded-full border border-[#B0BEB5] text-[#718878] bg-white">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" /></svg>
           </button>
         </div>
-
       </div>
     </section>
   );
@@ -969,6 +925,7 @@ function FeaturedProjectSection() {
 }
 export default function AmicoHomepage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [videoIndex, setVideoIndex] = useState(0);
   const [sportsDropdownOpen, setSportsDropdownOpen] = useState(false);
 
   const sportsPages = [
@@ -987,7 +944,12 @@ export default function AmicoHomepage() {
   // Sports names for typing animation
   const sportsNames = sportsPages.map(sport => sport.name);
   const animatedText = useTypingAnimation(sportsNames, 100, 50, 1500);
-
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setVideoIndex((prev) => (prev === 2 ? 0 : prev + 1));
+    }, 5000); // Change video every 5 seconds
+    return () => clearInterval(timer);
+  }, []);
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
       <style jsx>{`
@@ -1063,28 +1025,66 @@ export default function AmicoHomepage() {
       <section className="pt-20">
         {/* Mobile View - Stacked Layout */}
         <div className="md:hidden">
-          {/* Top Video */}
-          <div className="h-[350px] relative animate-fade-in overflow-hidden">
-            <video
-              src="/amico-vid-1.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white/30"></div>
+          {/* Top Video Carousel */}
+          <div className="h-[450px] relative overflow-hidden group">
+            {/* Slider Track */}
+            <div
+              className="flex h-full transition-transform duration-700 ease-in-out"
+              style={{ transform: `translateX(-${videoIndex * 100}%)` }}
+            >
+              {[1, 2, 3].map((_, i) => (
+                <div key={i} className="w-full h-full flex-shrink-0 relative">
+                  <video
+                    src="/amico-vid-1.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                  {/* Overlay to ensure text visibility and blend */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-white/40"></div>
+                </div>
+              ))}
+            </div>
+
+            {/* Navigation Dots */}
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+              {[0, 1, 2].map((i) => (
+                <button
+                  key={i}
+                  onClick={() => setVideoIndex(i)}
+                  className={`h-1.5 transition-all duration-300 rounded-full ${videoIndex === i ? "w-8 bg-white" : "w-2 bg-white/50"
+                    }`}
+                  aria-label={`Go to slide ${i + 1}`}
+                />
+              ))}
+            </div>
+
+            {/* Optional: Navigation Arrows (Hidden by default, shown on tap) */}
+            <button
+              onClick={() => setVideoIndex((prev) => (prev === 0 ? 2 : prev - 1))}
+              className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center text-white/70"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" /></svg>
+            </button>
+            <button
+              onClick={() => setVideoIndex((prev) => (prev === 2 ? 0 : prev + 1))}
+              className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center text-white/70"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" /></svg>
+            </button>
           </div>
 
           {/* Center Content */}
           <div className="bg-white py-12 px-4 flex flex-col items-center justify-center animate-fade-in">
             <h1 className="text-4xl text-black font-thin mb-4 animate-slide-up text-center">We Build</h1>
             <h2 className="text-4xl font-thin animate-slide-up-delay text-center">
-              <span className="text-[#a98946]">{animatedText}<span className="animate-pulse">|</span></span>
+              <span className="text-[#a98946]">
+                {animatedText}<span className="animate-pulse">|</span>
+              </span>
             </h2>
           </div>
-
-
         </div>
 
         {/* Desktop View - Three Column Layout */}
@@ -1149,7 +1149,7 @@ export default function AmicoHomepage() {
       <Footer />
 
       {/* Floating Buttons */}
-      <div className="fixed bottom-6 left-6 z-50">
+      <div className="fixed bottom-6 right-6 z-50">
         <a href="https://wa.me/918890777424" target="_blank" rel="noopener noreferrer" className="bg-[#25D366] text-white p-3 rounded-full shadow-lg hover:scale-110 transition-transform flex items-center justify-center w-14 h-14">
           <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
             <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.017-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
@@ -1157,16 +1157,7 @@ export default function AmicoHomepage() {
         </a>
       </div>
 
-      <div className="fixed bottom-6 right-6 z-50">
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="bg-[#1e3a8a] text-white p-3 rounded-md shadow-lg hover:bg-[#232b7c] transition-colors w-10 h-10 flex items-center justify-center border border-white/20"
-        >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
-          </svg>
-        </button>
-      </div>
+
     </div>
   );
 }

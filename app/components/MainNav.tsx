@@ -162,7 +162,7 @@ export function MainNav() {
                   {sportsPages.map((sport) => (
                     <a
                       key={sport.slug}
-                      href={sport.slug == 'gym' ? '/services/gym' : `/sports/${sport.slug}`}
+                      href={sport.slug == '/services/gym' ? '/services/gym' : `/sports/${sport.slug}`}
                       className="block px-4 py-2 text-sm font-medium text-gray-600 hover:text-[#232b7c] hover:bg-gray-50 rounded-md transition-colors"
                       onClick={() => {
                         setMobileMenuOpen(false);

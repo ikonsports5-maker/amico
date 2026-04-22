@@ -46,7 +46,7 @@ export default function GymSolutionsPage() {
       `}</style>
             <MainNav />
             {/* --- HERO SECTION --- */}
-            <section className="relative h-[80vh] md:h-[90vh] flex items-center overflow-hidden bg-[#1A1F2C]">
+            <section className="relative h-[80vh] md:h-[90vh] flex items-center overflow-hidden pt-20 bg-[#1A1F2C]">
                 <div className="absolute inset-0 z-0">
                     <img
                         src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070"
@@ -69,12 +69,12 @@ export default function GymSolutionsPage() {
                             Engineered for Performance, Durability, and Long-Term Usage. Building the future of fitness across India.
                         </p>
                         <div className="flex flex-wrap gap-4 animate-slide-up delay-400">
-                            <button className="bg-[#F26E41] text-white px-8 py-4 rounded-full font-bold uppercase text-xs tracking-widest hover:bg-[#d35a2e] transition-all shadow-lg">
+                            {/* <button className="bg-[#F26E41] text-white px-8 py-4 rounded-full font-bold uppercase text-xs tracking-widest hover:bg-[#d35a2e] transition-all shadow-lg">
                                 Get a Quote
-                            </button>
-                            <button className="border border-white text-white px-8 py-4 rounded-full font-bold uppercase text-xs tracking-widest hover:bg-white hover:text-[#1A1F2C] transition-all">
+                            </button> */}
+                            <a href='/product' className="border border-white text-white px-8 py-4 rounded-full font-bold uppercase text-xs tracking-widest hover:bg-white hover:text-[#1A1F2C] transition-all">
                                 Our Projects
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
