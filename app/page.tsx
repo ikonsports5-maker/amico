@@ -589,7 +589,7 @@ function TestimonialsSection() {
     setCurrentIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
   };
 
-  const goToSlide = (index) => {
+  const goToSlide = (index: any) => {
     setCurrentIndex(index);
   };
 

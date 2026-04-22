@@ -23,9 +23,7 @@ export default function Footer() {
                     {/* Brand Column */}
                     <div className="space-y-6">
                         <div className="flex items-center gap-2">
-                            <h2 className="text-4xl font-black tracking-tighter uppercase">
-                                AM<span className="text-[#a98946]">I</span>CO
-                            </h2>
+                            <img src="/images/amico-sticker.png" className="w-32" alt="Footer Logo" />
                         </div>
                     </div>
 
